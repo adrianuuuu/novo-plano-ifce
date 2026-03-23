@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plano Estratégico – Concurso IFCE Analista de TI</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+/* ── RESET & VARIABLES ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d1117;
+  --surface:   #161b22;
+  --surface2:  #1c2430;
+  --border:    #30363d;
+  --accent:    #58a6ff;
+  --accent2:   #3fb950;
+  --accent3:   #f78166;
+  --accent4:   #d2a8ff;
+  --accent5:   #ffa657;
+  --text:      #e6edf3;
+  --muted:     #8b949e;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --r:         12px;
+  --r-lg:      18px;
+  --shadow:    0 4px 24px rgba(0,0,0,.4);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── LAYOUT ────────────────────────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* ── HEADER ────────────────────────────────────────────── */
+header {
+  background: linear-gradient(135deg, #0d1117 0%, #161b40 60%, #0d1117 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(88,166,255,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(88,166,255,.12);
+  border: 1px solid rgba(88,166,255,.3);
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+h1 span { color: var(--accent); }
+
+.subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.countdown-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px 28px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  min-width: 220px;
+}
+
+.countdown-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cd-num {
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  background: rgba(88,166,255,.1);
+  border-radius: 8px;
+  padding: 4px 12px;
+  min-width: 52px;
+}
+
+.cd-sep {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.cd-lbl {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .08em;
+  margin-top: 4px;
+}
+
+.exam-date {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.exam-date strong { color: var(--accent5); }
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0;
+}
+
+.nav-scroll {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-scroll::-webkit-scrollbar { display: none; }
+
+.nav-item {
+  flex-shrink: 0;
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+
+.nav-item:hover { color: var(--text); }
+.nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── SECTION ───────────────────────────────────────────── */
+section { padding: 48px 0; }
+section:nth-child(even) { background: rgba(255,255,255,.01); }
+
+.section-title {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title .icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+/* ── GRID LAYOUTS ──────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+
+/* ── CARD ──────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: rgba(88,166,255,.2);
+}
+
+/* ── STAT CARD ─────────────────────────────────────────── */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s;
+}
+.stat-card:hover { transform: translateY(-2px); }
+
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-family: var(--font-head);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.5s ease;
+}
+
+/* ── PROGRESS BAR ──────────────────────────────────────── */
+.progress-wrap { margin-bottom: 16px; }
+.progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.progress-name { font-size: 13px; font-weight: 500; }
+.progress-pct { font-size: 12px; color: var(--muted); }
+
+.progress-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.5s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── TABLE ─────────────────────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th {
+  background: var(--surface2);
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,.02); }
+
+.td-bold { font-weight: 600; }
+.td-accent { color: var(--accent); font-family: var(--font-head); font-weight: 700; font-size: 16px; }
+
+/* ── BADGES ────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.badge-blue  { background: rgba(88,166,255,.15); color: var(--accent); border: 1px solid rgba(88,166,255,.25); }
+.badge-green { background: rgba(63,185,80,.15);  color: var(--accent2); border: 1px solid rgba(63,185,80,.25); }
+.badge-red   { background: rgba(247,129,102,.15); color: var(--accent3); border: 1px solid rgba(247,129,102,.25); }
+.badge-purple{ background: rgba(210,168,255,.15); color: var(--accent4); border: 1px solid rgba(210,168,255,.25); }
+.badge-orange{ background: rgba(255,166,87,.15); color: var(--accent5); border: 1px solid rgba(255,166,87,.25); }
+
+/* ── TAG LIST ──────────────────────────────────────────── */
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.tag {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: background .15s, color .15s, border-color .15s;
+  cursor: default;
+}
+.tag:hover { background: rgba(88,166,255,.1); color: var(--accent); border-color: rgba(88,166,255,.3); }
+
+/* ── PRIORITY BLOCKS ───────────────────────────────────── */
+.priority-card {
+  border-radius: var(--r-lg);
+  padding: 24px;
+  border: 1px solid;
+}
+
+.priority-max {
+  background: rgba(247,129,102,.06);
+  border-color: rgba(247,129,102,.25);
+}
+
+.priority-med {
+  background: rgba(255,166,87,.06);
+  border-color: rgba(255,166,87,.25);
+}
+
+.priority-low {
+  background: rgba(139,148,158,.06);
+  border-color: rgba(139,148,158,.2);
+}
+
+.priority-label {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priority-max .priority-label { color: var(--accent3); }
+.priority-med .priority-label { color: var(--accent5); }
+.priority-low .priority-label { color: var(--muted); }
+
+.priority-items { display: flex; flex-direction: column; gap: 10px; }
+
+.priority-item {
+  background: rgba(255,255,255,.04);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.priority-item strong {
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── SCHEDULE ──────────────────────────────────────────── */
+.block-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.block-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  text-align: center;
+}
+
+.block-num {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.block-time {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.block-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.block-desc  { font-size: 12px; color: var(--muted); }
+
+/* ── WEEK SCHEDULE ─────────────────────────────────────── */
+.week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+
+.day-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px;
+  text-align: center;
+  transition: border-color .2s;
+}
+
+.day-card:hover { border-color: rgba(88,166,255,.3); }
+
+.day-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.day-num {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.day-topic {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.day-sub {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.day-badge {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(63,185,80,.12);
+  color: var(--accent2);
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── VIDEO LIST ────────────────────────────────────────── */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+
+.video-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color .2s, background .2s, transform .15s;
+}
+
+.video-card:hover {
+  border-color: rgba(255,0,0,.3);
+  background: rgba(255,0,0,.04);
+  transform: translateY(-2px);
+}
+
+.video-thumb {
+  width: 48px; height: 48px;
+  background: rgba(255,0,0,.15);
+  border: 1px solid rgba(255,0,0,.3);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.video-info { flex: 1; min-width: 0; }
+.video-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+.video-url   { font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── QUESTIONS TRACKER ─────────────────────────────────── */
+.quest-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.quest-ring svg { transform: rotate(-90deg); }
+.quest-ring-bg  { fill: none; stroke: var(--border); stroke-width: 10; }
+.quest-ring-fill { fill: none; stroke: var(--accent2); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1); }
+
+.quest-ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+}
+
+.quest-ring-num  { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--accent2); }
+.quest-ring-meta { font-size: 11px; color: var(--muted); }
+
+.quest-input-group {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+
+.quest-input {
+  flex: 1;
+  min-width: 120px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: border-color .2s;
+  outline: none;
+}
+
+.quest-input:focus { border-color: var(--accent2); }
+
+.btn {
+  background: var(--accent2);
+  color: #0d1117;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .15s, transform .15s;
+}
+
+.btn:hover  { opacity: .85; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-red { background: var(--accent3); }
+
+/* ── ORDER STEPS ───────────────────────────────────────── */
+.order-steps { display: flex; flex-direction: column; gap: 12px; }
+
+.order-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--surface2);
+  border-radius: var(--r);
+  padding: 16px;
+}
+
+.step-num {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  min-width: 36px;
+}
+
+.step-1 { color: var(--accent); }
+.step-2 { color: var(--accent4); }
+.step-3 { color: var(--accent5); }
+
+.step-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.step-desc  { font-size: 13px; color: var(--muted); }
+
+/* ── MOTIVATION ────────────────────────────────────────── */
+.motive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.motive-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--surface2);
+  border-radius: var(--r);
+  padding: 16px;
+  border-left: 3px solid var(--accent2);
+}
+
+.motive-icon { font-size: 22px; flex-shrink: 0; }
+.motive-text { font-size: 14px; font-weight: 500; }
+
+/* ── APPS ──────────────────────────────────────────────── */
+.app-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.app-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ── BANCA STYLE ───────────────────────────────────────── */
+.question-example {
+  background: var(--surface2);
+  border-left: 3px solid var(--accent4);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.question-example::before {
+  content: '💬 ';
+  font-style: normal;
+}
+
+/* ── MAP MIND ──────────────────────────────────────────── */
+.mind-map {
+  background: var(--surface2);
+  border-radius: var(--r);
+  padding: 20px;
+  font-size: 13px;
+}
+
+.mind-root {
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.mind-children { display: flex; flex-wrap: wrap; gap: 8px; }
+.mind-child {
+  background: rgba(88,166,255,.1);
+  border: 1px solid rgba(88,166,255,.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+/* ── ALERT BANNER ──────────────────────────────────────── */
+.alert-banner {
+  background: rgba(63,185,80,.08);
+  border: 1px solid rgba(63,185,80,.25);
+  border-radius: var(--r);
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.alert-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.alert-body { flex: 1; }
+.alert-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--accent2); }
+.alert-desc  { font-size: 13px; color: var(--muted); }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── SCHED CONTROLS ────────────────────────────────────── */
+.sched-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 14px 18px;
+}
+
+.sched-view-toggle {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.view-toggle-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.view-toggle-btn:hover { color: var(--text); border-color: rgba(88,166,255,.3); }
+
+.view-toggle-btn.active {
+  background: rgba(88,166,255,.15);
+  color: var(--accent);
+  border-color: rgba(88,166,255,.4);
+}
+
+.view-toggle-all { border-color: rgba(210,168,255,.25); color: var(--accent4); }
+.view-toggle-all.active { background: rgba(210,168,255,.12); border-color: rgba(210,168,255,.4); }
+
+.sched-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── WEEK PILLS ────────────────────────────────────────── */
+.week-pills, .day-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.week-pill, .day-pill {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.week-pill:hover, .day-pill:hover {
+  background: rgba(88,166,255,.1);
+  color: var(--accent);
+  border-color: rgba(88,166,255,.3);
+}
+
+.week-pill.active, .day-pill.active {
+  background: rgba(88,166,255,.15);
+  color: var(--accent);
+  border-color: rgba(88,166,255,.4);
+}
+
+/* ── NAV BUTTONS ───────────────────────────────────────── */
+.week-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.week-btn:hover { color: var(--text); border-color: rgba(88,166,255,.3); }
+.week-btn:disabled { opacity: .3; cursor: not-allowed; }
+
+/* ── DAY DETAIL CARD ───────────────────────────────────── */
+.day-detail {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  animation: fadeUp .3s ease both;
+}
+
+.day-detail-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.day-detail-weekday {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.day-detail-date {
+  font-family: var(--font-head);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.day-detail-title-block {}
+
+.day-detail-topic {
+  font-family: var(--font-head);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.day-detail-theme {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.day-detail-q-badge {
+  background: rgba(63,185,80,.12);
+  border: 1px solid rgba(63,185,80,.3);
+  color: var(--accent2);
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 800;
+  padding: 12px 20px;
+  border-radius: var(--r);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.day-detail-q-label {
+  font-size: 10px;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.day-detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.day-detail-col {
+  padding: 24px 28px;
+  border-right: 1px solid var(--border);
+}
+
+.day-detail-col:last-child { border-right: none; }
+
+.day-col-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.day-col-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.day-col-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.day-col-item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* ── ALL WEEKS VIEW ────────────────────────────────────── */
+.all-week-block {
+  margin-bottom: 32px;
+  animation: fadeUp .35s ease both;
+}
+
+.all-week-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.all-week-label {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.all-week-dates {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.all-week-status { margin-left: auto; }
+
+/* ── ANIMATIONS ────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate { animation: fadeUp .5s ease both; }
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .week-grid { grid-template-columns: repeat(4, 1fr); }
+  .day-detail-body { grid-template-columns: 1fr; }
+  .day-detail-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .day-detail-col:last-child { border-bottom: none; }
+}
+
+@media (max-width: 768px) {
+  .header-grid { grid-template-columns: 1fr; }
+  .countdown-box { width: 100%; }
+  .grid-3, .grid-2, .block-grid { grid-template-columns: 1fr; }
+  .motive-grid { grid-template-columns: 1fr; }
+  .week-grid { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: 1fr; }
+  .day-detail-header { grid-template-columns: auto 1fr; }
+  .day-detail-q-badge { display: none; }
+  .sched-controls { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 20px; }
+  .week-grid { grid-template-columns: 1fr; }
+  .cd-num { font-size: 24px; padding: 4px 8px; min-width: 42px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════ -->
+<header>
+  <div class="container">
+    <div class="header-grid">
+      <div>
+        <div class="header-badge">🎯 Concurso IFCE 2025</div>
+        <h1>Plano Estratégico de Estudos<br><span>Concurso IFCE Analista de TI</span></h1>
+        <p class="subtitle">Arquitetura e Desenvolvimento de Sistemas &nbsp;·&nbsp; Instituto AOCP</p>
+      </div>
+
+      <div class="countdown-box">
+        <div class="countdown-label">⏳ Tempo até a prova</div>
+        <div class="countdown-timer">
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-days">--</div>
+            <div class="cd-lbl">DIAS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-hours">--</div>
+            <div class="cd-lbl">HRS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-mins">--</div>
+            <div class="cd-lbl">MIN</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-secs">--</div>
+            <div class="cd-lbl">SEG</div>
+          </div>
+        </div>
+        <div class="exam-date">Prova: <strong>03 de Maio de 2026</strong></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════════ -->
+<nav>
+  <div class="container">
+    <div class="nav-scroll">
+      <div class="nav-item active" onclick="scrollToSection('dashboard')">📊 Dashboard</div>
+      <div class="nav-item" onclick="scrollToSection('prova')">📝 Estrutura da Prova</div>
+      <div class="nav-item" onclick="scrollToSection('edital')">📚 Edital</div>
+      <div class="nav-item" onclick="scrollToSection('prioridade')">🚦 Prioridade</div>
+      <div class="nav-item" onclick="scrollToSection('rotina')">🕐 Rotina</div>
+      <div class="nav-item" onclick="scrollToSection('semana')">📅 Semana 1</div>
+      <div class="nav-item" onclick="scrollToSection('videos')">▶️ Videoaulas</div>
+      <div class="nav-item" onclick="scrollToSection('questoes')">✅ Questões</div>
+      <div class="nav-item" onclick="scrollToSection('estrategia')">⚡ Estratégia</div>
+      <div class="nav-item" onclick="scrollToSection('motivacao')">💪 Motivação</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     DASHBOARD
+══════════════════════════════════════════════════════ -->
+<section id="dashboard">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(88,166,255,.12);">📊</div>
+      Dashboard Principal
+    </div>
+    <p class="section-desc">Visão geral do seu plano de estudos</p>
+
+    <div class="grid-4" style="margin-bottom:24px;">
+      <div class="stat-card">
+        <div class="stat-label">Dias restantes</div>
+        <div class="stat-value" style="color:var(--accent3);" id="stat-days">48</div>
+        <div style="font-size:12px;color:var(--muted);">Até 03 de Maio</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="background:var(--accent3);width:0" id="stat-days-bar"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Dias de estudo</div>
+        <div class="stat-value" style="color:var(--accent);">~42</div>
+        <div style="font-size:12px;color:var(--muted);">Descontando descanso</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="background:var(--accent);width:12%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Horas planejadas</div>
+        <div class="stat-value" style="color:var(--accent4);">168h</div>
+        <div style="font-size:12px;color:var(--muted);">4h/dia × 42 dias</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="background:var(--accent4);width:0" id="stat-hours-bar"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Meta de questões</div>
+        <div class="stat-value" style="color:var(--accent2);" id="stat-q-num">0</div>
+        <div style="font-size:12px;color:var(--muted);">Meta: 1000 questões</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="background:var(--accent2);width:0" id="stat-q-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:18px;">Média diária de questões necessárias</div>
+      <div class="progress-wrap">
+        <div class="progress-header"><span class="progress-name">Questões resolvidas / Meta (1000)</span><span class="progress-pct" id="prog-q-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="background:var(--accent2);width:0" id="prog-q-bar"></div></div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:12px;">
+        <div style="font-size:13px;color:var(--muted);">📌 Média necessária: <strong style="color:var(--text);">~24 questões/dia</strong></div>
+        <div style="font-size:13px;color:var(--muted);">⏱️ Tempo por questão: <strong style="color:var(--text);">~3 min</strong></div>
+        <div style="font-size:13px;color:var(--muted);">🎯 Banco recomendado: <strong style="color:var(--text);">QConcursos / Gran Cursos</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ESTRUTURA DA PROVA
+══════════════════════════════════════════════════════ -->
+<section id="prova">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,129,102,.12);">📝</div>
+      Estrutura da Prova
+    </div>
+    <p class="section-desc">Banca Instituto AOCP — Distribuição de questões e pontos</p>
+
+    <div class="alert-banner">
+      <div class="alert-icon">🔥</div>
+      <div class="alert-body">
+        <div class="alert-title">70% da prova é conhecimento técnico de TI</div>
+        <div class="alert-desc">Concentre a maior parte do seu tempo em Conhecimentos Específicos. São 35 questões valendo 70 pontos — é onde a aprovação é definida.</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Disciplina</th>
+              <th>Questões</th>
+              <th>Pontos</th>
+              <th>Peso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">📖 Língua Portuguesa</td>
+              <td class="td-accent">10</td>
+              <td>12 pts</td>
+              <td><span class="badge badge-blue">12%</span></td>
+            </tr>
+            <tr>
+              <td class="td-bold">⚖️ Legislação</td>
+              <td class="td-accent">15</td>
+              <td>18 pts</td>
+              <td><span class="badge badge-purple">18%</span></td>
+            </tr>
+            <tr style="background:rgba(63,185,80,.04);">
+              <td class="td-bold">💻 Conhecimentos Específicos</td>
+              <td class="td-accent" style="color:var(--accent2);">35</td>
+              <td style="color:var(--accent2);font-weight:700;">70 pts</td>
+              <td><span class="badge badge-green">70%</span></td>
+            </tr>
+            <tr style="background:rgba(255,255,255,.02);">
+              <td class="td-bold">📊 TOTAL</td>
+              <td class="td-accent">60</td>
+              <td>100 pts</td>
+              <td>100%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:16px;">📋 Perfil da Banca — Instituto AOCP</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="font-size:18px;">✅</span>
+            <span style="font-size:13px;">Questões <strong>diretas e objetivas</strong></span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="font-size:18px;">✅</span>
+            <span style="font-size:13px;">Foco em <strong>conceitos técnicos</strong></span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="font-size:18px;">✅</span>
+            <span style="font-size:13px;"><strong>Pouca matemática</strong> — mais teoria</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="font-size:18px;">✅</span>
+            <span style="font-size:13px;">Estilo: <strong>conceito + aplicação prática</strong></span>
+          </div>
+        </div>
+        <div style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;font-weight:600;">Exemplos de perguntas</div>
+        <div class="question-example">Qual tecnologia é utilizada para autenticação baseada em token?</div>
+        <div class="question-example">O padrão REST utiliza qual formato mais comum de troca de dados?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CONTEÚDO DO EDITAL
+══════════════════════════════════════════════════════ -->
+<section id="edital">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(210,168,255,.12);">📚</div>
+      Conteúdo do Edital
+    </div>
+    <p class="section-desc">Todos os tópicos organizados por categoria</p>
+
+    <div class="grid-3">
+      <!-- Dev & Arquitetura -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:20px;">🏗️</span>
+          <span style="font-family:var(--font-head);font-size:14px;font-weight:700;">Desenvolvimento & Arquitetura</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">APIs</span>
+          <span class="tag">REST / JSON</span>
+          <span class="tag">Microsserviços</span>
+          <span class="tag">Arq. Hexagonal</span>
+          <span class="tag">DevOps</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitLab</span>
+          <span class="tag">Jenkins</span>
+        </div>
+      </div>
+      <!-- Frameworks -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:20px;">🔧</span>
+          <span style="font-family:var(--font-head);font-size:14px;font-weight:700;">Frameworks</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">SpringBoot</span>
+          <span class="tag">Hibernate</span>
+          <span class="tag">Django</span>
+          <span class="tag">Flask</span>
+          <span class="tag" style="background:rgba(63,185,80,.12);color:var(--accent2);border-color:rgba(63,185,80,.25);">Node.js ⭐</span>
+          <span class="tag">Express</span>
+        </div>
+      </div>
+      <!-- Frontend -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:20px;">🎨</span>
+          <span style="font-family:var(--font-head);font-size:14px;font-weight:700;">Frontend</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Ajax</span>
+          <span class="tag">React</span>
+          <span class="tag">Vue</span>
+          <span class="tag">Bootstrap</span>
+        </div>
+      </div>
+      <!-- Banco de Dados -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:20px;">🗄️</span>
+          <span style="font-family:var(--font-head);font-size:14px;font-weight:700;">Banco de Dados</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">SQL</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Modelagem</span>
+          <span class="tag">Normalização</span>
+        </div>
+      </div>
+      <!-- Segurança -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:20px;">🔐</span>
+          <span style="font-family:var(--font-head);font-size:14px;font-weight:700;">Segurança</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">OWASP Top 10</span>
+          <span class="tag">ISO 27001</span>
+          <span class="tag">OAuth2</span>
+          <span class="tag">JWT</span>
+          <span class="tag">SSO</span>
+          <span class="tag">MFA</span>
+        </div>
+      </div>
+      <!-- Gestão + Legislação -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:20px;">📋</span>
+          <span style="font-family:var(--font-head);font-size:14px;font-weight:700;">Gestão & Legislação</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Scrum</span>
+          <span class="tag">Kanban</span>
+          <span class="tag">XP</span>
+          <span class="tag">BPMN</span>
+          <span class="tag">Gestão de Projetos</span>
+          <span class="tag">LGPD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PRIORIDADE
+══════════════════════════════════════════════════════ -->
+<section id="prioridade">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,129,102,.12);">🚦</div>
+      Prioridade de Estudos
+    </div>
+    <p class="section-desc">Organize seu tempo de acordo com o impacto na prova</p>
+
+    <div class="grid-3">
+      <!-- MÁXIMA -->
+      <div class="priority-card priority-max">
+        <div class="priority-label">🔴 Prioridade Máxima</div>
+        <div class="priority-items">
+          <div class="priority-item">
+            <strong>🏗️ Arquitetura de Software</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">Microsserviços</span>
+              <span class="tag">REST</span>
+              <span class="tag">APIs</span>
+              <span class="tag">Camadas</span>
+              <span class="tag">Hexagonal</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>🟢 Backend (Node.js)</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">APIs REST</span>
+              <span class="tag">JSON</span>
+              <span class="tag">Express</span>
+              <span class="tag">JWT</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>🗄️ Banco de Dados</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">SQL</span>
+              <span class="tag">Modelagem</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>⚙️ DevOps</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">Git</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">Pipelines</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>📋 Metodologias Ágeis</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">Scrum</span>
+              <span class="tag">Kanban</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>🔐 Segurança</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">OWASP</span>
+              <span class="tag">JWT</span>
+              <span class="tag">OAuth2</span>
+              <span class="tag">LGPD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÉDIA -->
+      <div class="priority-card priority-med">
+        <div class="priority-label">🟡 Prioridade Média</div>
+        <div class="priority-items">
+          <div class="priority-item">
+            <strong>🎨 Frontend</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">React</span>
+              <span class="tag">Vue</span>
+              <span class="tag">UX</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>🌐 Outros Frameworks</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">SpringBoot</span>
+              <span class="tag">Django</span>
+              <span class="tag">Flask</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>📖 Português</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">Interpretação</span>
+              <span class="tag">Gramática</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAIXA -->
+      <div class="priority-card priority-low">
+        <div class="priority-label">⚪ Prioridade Baixa</div>
+        <div class="priority-items">
+          <div class="priority-item">
+            <strong>📱 Mobile</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">Android</span>
+              <span class="tag">iOS</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>🤖 Automação</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">RPA</span>
+              <span class="tag">CMS</span>
+            </div>
+          </div>
+          <div class="priority-item">
+            <strong>🎯 Design</strong>
+            <div class="tag-list" style="margin-top:6px;">
+              <span class="tag">Design Thinking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ESTRATÉGIA DE ESTUDO
+══════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(88,166,255,.12);">🧠</div>
+      Estratégia de Estudo
+    </div>
+    <p class="section-desc">Técnicas para maximizar a fixação do conteúdo</p>
+
+    <div class="grid-3">
+      <div class="card" style="border-top:3px solid var(--accent);">
+        <div style="font-size:28px;margin-bottom:10px;">📺</div>
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:8px;">Técnica 1 — Estudo Ativo</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;">
+          1. Assista a aula ou leia o material<br>
+          2. Resolva <strong style="color:var(--accent);">20 questões</strong> imediatamente após<br>
+          3. Revise os erros e anote dúvidas
+        </div>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--accent2);">
+        <div style="font-size:28px;margin-bottom:10px;">🔄</div>
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:8px;">Técnica 2 — Revisão 24h</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;">
+          No dia seguinte, reserve <strong style="color:var(--accent2);">10 minutos</strong> para revisitar o conteúdo estudado.<br><br>
+          A revisão espaçada aumenta em até 80% a retenção.
+        </div>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--accent4);">
+        <div style="font-size:28px;margin-bottom:10px;">🗺️</div>
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:8px;">Técnica 3 — Mapa Mental</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Exemplo de mapa para REST:</div>
+        <div class="mind-map">
+          <div class="mind-root">🔗 REST</div>
+          <div class="mind-children">
+            <span class="mind-child">GET</span>
+            <span class="mind-child">POST</span>
+            <span class="mind-child">PUT</span>
+            <span class="mind-child">DELETE</span>
+            <span class="mind-child">Stateless</span>
+            <span class="mind-child">JSON</span>
+            <span class="mind-child">Status Codes</span>
+            <span class="mind-child">Headers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ROTINA DIÁRIA
+══════════════════════════════════════════════════════ -->
+<section id="rotina">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(255,166,87,.12);">🕐</div>
+      Rotina Diária de Estudo
+    </div>
+    <p class="section-desc">4 horas por dia divididas em 3 blocos estratégicos</p>
+
+    <div class="block-grid">
+      <div class="block-card" style="border-top:3px solid var(--accent);">
+        <div class="block-num">Bloco 1</div>
+        <div class="block-time">1h30</div>
+        <div class="block-title">📺 Aula + Leitura</div>
+        <div class="block-desc">Videoaula ou leitura ativa do conteúdo. Anote pontos-chave e defina conceitos.</div>
+      </div>
+      <div class="block-card" style="border-top:3px solid var(--accent2);">
+        <div class="block-num">Bloco 2</div>
+        <div class="block-time">1h30</div>
+        <div class="block-title">✅ Resolução de Questões</div>
+        <div class="block-desc">Resolva questões da banca AOCP. Analise os erros e entenda o raciocínio.</div>
+      </div>
+      <div class="block-card" style="border-top:3px solid var(--accent4);">
+        <div class="block-num">Bloco 3</div>
+        <div class="block-time">1h00</div>
+        <div class="block-title">🔄 Revisão + Resumo</div>
+        <div class="block-desc">Revise o dia anterior, construa resumo e atualize seus mapas mentais.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CRONOGRAMA DINÂMICO
+══════════════════════════════════════════════════════ -->
+<section id="semana">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(63,185,80,.12);">📅</div>
+      <span id="sched-title">Cronograma</span>
+    </div>
+    <p class="section-desc" id="sched-desc"></p>
+
+    <!-- ── Barra de controles ── -->
+    <div class="sched-controls">
+
+      <!-- Esquerda: modo de visualização -->
+      <div class="sched-view-toggle">
+        <button class="view-toggle-btn active" id="btn-view-week" onclick="setView('week')">
+          📅 Por Semana
+        </button>
+        <button class="view-toggle-btn" id="btn-view-day" onclick="setView('day')">
+          🗓️ Por Dia
+        </button>
+        <button class="view-toggle-btn view-toggle-all" id="btn-view-all" onclick="setView('all')">
+          📋 Todas as Semanas
+        </button>
+      </div>
+
+      <!-- Direita: navegação por semana -->
+      <div class="sched-nav" id="sched-nav-week">
+        <button class="week-btn" id="btn-prev-week" onclick="changeWeek(-1)">← Ant.</button>
+        <div class="week-pills" id="week-pills"></div>
+        <button class="week-btn" id="btn-next-week" onclick="changeWeek(1)">Próx. →</button>
+      </div>
+
+      <!-- Direita: navegação por dia -->
+      <div class="sched-nav" id="sched-nav-day" style="display:none;">
+        <button class="week-btn" onclick="changeDay(-1)">← Ant.</button>
+        <div class="day-pills" id="day-pills"></div>
+        <button class="week-btn" onclick="changeDay(1)">Próx. →</button>
+      </div>
+
+    </div>
+
+    <!-- Vista: semana (7 cards lado a lado) -->
+    <div id="view-week">
+      <div class="week-grid" id="week-grid-single"></div>
+    </div>
+
+    <!-- Vista: dia único (card expandido) -->
+    <div id="view-day" style="display:none;">
+      <div id="day-detail-card"></div>
+    </div>
+
+    <!-- Vista: todas as semanas empilhadas -->
+    <div id="view-all" style="display:none;">
+      <div id="all-weeks-container"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     VIDEOAULAS
+══════════════════════════════════════════════════════ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,129,102,.12);">▶️</div>
+      Videoaulas Recomendadas
+    </div>
+    <p class="section-desc">Clique para abrir no YouTube</p>
+
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/watch?v=BnknNTN8icw" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">Arquitetura de Software</div>
+          <div class="video-url">youtube.com/watch?v=BnknNTN8icw</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=SCyVvF2l4wE" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">Microsserviços</div>
+          <div class="video-url">youtube.com/watch?v=SCyVvF2l4wE</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=vtPkZShrvXQ" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">SpringBoot</div>
+          <div class="video-url">youtube.com/watch?v=vtPkZShrvXQ</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=6Czd1Yetaac" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">Git Completo</div>
+          <div class="video-url">youtube.com/watch?v=6Czd1Yetaac</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=HXV3zeQKqGY" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">SQL</div>
+          <div class="video-url">youtube.com/watch?v=HXV3zeQKqGY</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=XfvQWnRgxG0" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">Scrum</div>
+          <div class="video-url">youtube.com/watch?v=XfvQWnRgxG0</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=0zB2QXk1ZqY" target="_blank" rel="noopener">
+        <div class="video-thumb">▶️</div>
+        <div class="video-info">
+          <div class="video-title">LGPD</div>
+          <div class="video-url">youtube.com/watch?v=0zB2QXk1ZqY</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     META DE QUESTÕES
+══════════════════════════════════════════════════════ -->
+<section id="questoes">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(63,185,80,.12);">✅</div>
+      Meta de Questões
+    </div>
+    <p class="section-desc">Acompanhe seu progresso — Meta: 1000 questões resolvidas</p>
+
+    <div class="grid-2">
+      <div class="card" style="text-align:center;">
+        <div class="quest-ring">
+          <svg width="160" height="160" viewBox="0 0 160 160">
+            <circle class="quest-ring-bg" cx="80" cy="80" r="70"/>
+            <circle class="quest-ring-fill" id="ring-fill" cx="80" cy="80" r="70"/>
+          </svg>
+          <div class="quest-ring-text">
+            <div class="quest-ring-num" id="ring-num">0</div>
+            <div class="quest-ring-meta">de 1000</div>
+          </div>
+        </div>
+
+        <div class="quest-input-group" style="justify-content:center;">
+          <input class="quest-input" type="number" id="quest-input" placeholder="Questões resolvidas" min="0" max="1000" />
+          <button class="btn" onclick="updateQuestions()">Atualizar</button>
+          <button class="btn btn-red" onclick="resetQuestions()">Reset</button>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--muted);" id="quest-status">Insira o total de questões resolvidas</div>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:16px;">📈 Metas por Semana</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="progress-wrap">
+            <div class="progress-header"><span class="progress-name">Semana 1 (130 questões)</span><span class="progress-pct">13%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="background:var(--accent);width:13%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-header"><span class="progress-name">Semana 2 (130 questões)</span><span class="progress-pct">26%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="background:var(--accent2);width:26%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-header"><span class="progress-name">Semana 3 (130 questões)</span><span class="progress-pct">39%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="background:var(--accent4);width:39%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-header"><span class="progress-name">Semana 4 (130 questões)</span><span class="progress-pct">52%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="background:var(--accent5);width:52%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-header"><span class="progress-name">Semanas 5-7 (480 questões)</span><span class="progress-pct">100%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="background:var(--accent3);width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ESTRATÉGIA DE PROVA
+══════════════════════════════════════════════════════ -->
+<section id="estrategia">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(88,166,255,.12);">⚡</div>
+      Estratégia no Dia da Prova
+    </div>
+    <p class="section-desc">Ordem de resolução e táticas para maximizar sua pontuação</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:20px;">🎯 Ordem de Resolução</div>
+        <div class="order-steps">
+          <div class="order-step">
+            <div class="step-num step-1">1º</div>
+            <div>
+              <div class="step-title">💻 Conhecimentos Específicos</div>
+              <div class="step-desc">TI exige mais raciocínio. Resolva enquanto a mente está descansada. São os 70 pontos mais importantes.</div>
+            </div>
+          </div>
+          <div class="order-step">
+            <div class="step-num step-2">2º</div>
+            <div>
+              <div class="step-title">📖 Língua Portuguesa</div>
+              <div class="step-desc">Leitura e interpretação ficam para um segundo momento quando a concentração ainda está boa.</div>
+            </div>
+          </div>
+          <div class="order-step">
+            <div class="step-num step-3">3º</div>
+            <div>
+              <div class="step-title">⚖️ Legislação</div>
+              <div class="step-desc">Questões mais decorativas podem ser respondidas no final, com a mente mais livre para memória.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:20px;">💡 Dicas Táticas</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">⏱️</span>
+            <div style="font-size:13px;color:var(--muted);"><strong style="color:var(--text);">Controle o tempo</strong> — 3 min por questão. Se travar, pule e volte depois.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">🔍</span>
+            <div style="font-size:13px;color:var(--muted);"><strong style="color:var(--text);">Leia o enunciado com atenção</strong> — a AOCP usa negações e palavras-chave que mudam tudo.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">✏️</span>
+            <div style="font-size:13px;color:var(--muted);"><strong style="color:var(--text);">Anote questões duvidosas</strong> no caderno para revisar antes de marcar o gabarito.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">🧘</span>
+            <div style="font-size:13px;color:var(--muted);"><strong style="color:var(--text);">Respire fundo</strong> — sua experiência real é um diferencial que a maioria não tem.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">🚫</span>
+            <div style="font-size:13px;color:var(--muted);">Nunca deixe questões em branco. Uma tentativa sempre vale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     MICRO ESTUDOS
+══════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(210,168,255,.12);">⚡</div>
+      Micro Estudos
+    </div>
+    <p class="section-desc">Aproveite os tempos livres para reforçar o aprendizado</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:16px;">📲 Apps Recomendados</div>
+        <div class="app-grid">
+          <div class="app-badge"><span style="font-size:20px;">🃏</span> Anki</div>
+          <div class="app-badge"><span style="font-size:20px;">📝</span> Notion</div>
+          <div class="app-badge"><span style="font-size:20px;">🧠</span> Remnote</div>
+        </div>
+        <div style="margin-top:16px;font-size:13px;color:var(--muted);line-height:1.7;">
+          Use o <strong style="color:var(--text);">Anki</strong> para criar flashcards de conceitos técnicos.<br>
+          Use o <strong style="color:var(--text);">Notion</strong> para organizar resumos e listas de tópicos.<br>
+          Use o <strong style="color:var(--text);">Remnote</strong> para revisão espaçada com mapas mentais.
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:16px;">🕐 Nos Tempos Livres</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:18px;">🃏</span>
+            <div style="font-size:13px;"><strong>Flashcards</strong> — revise definições de conceitos em 30 segundos</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:18px;">🗺️</span>
+            <div style="font-size:13px;"><strong>Mapas mentais</strong> — visualize as relações entre tópicos</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:18px;">🔄</span>
+            <div style="font-size:13px;"><strong>Revisão rápida</strong> — releia seus resumos em 5-10 minutos</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:18px;">🎧</span>
+            <div style="font-size:13px;"><strong>Podcasts/vídeos</strong> — consuma conteúdo técnico no transporte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     MOTIVAÇÃO
+══════════════════════════════════════════════════════ -->
+<section id="motivacao">
+  <div class="container">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(63,185,80,.12);">💪</div>
+      Análise Motivacional
+    </div>
+    <p class="section-desc">Você tem vantagens reais sobre a maioria dos candidatos</p>
+
+    <div class="alert-banner" style="background:rgba(88,166,255,.06);border-color:rgba(88,166,255,.2);">
+      <div class="alert-icon">🚀</div>
+      <div class="alert-body">
+        <div class="alert-title" style="color:var(--accent);">Diferencial competitivo</div>
+        <div class="alert-desc">Muitos candidatos estão decorando conceitos que você já usa no dia a dia. Sua experiência real em desenvolvimento é um <strong>diferencial enorme</strong> para a prova da AOCP, que privilegia o entendimento prático.</div>
+      </div>
+    </div>
+
+    <div class="motive-grid">
+      <div class="motive-item">
+        <div class="motive-icon">💻</div>
+        <div class="motive-text">Você <strong>já programa</strong> — não precisa aprender do zero</div>
+      </div>
+      <div class="motive-item">
+        <div class="motive-icon">🏗️</div>
+        <div class="motive-text">Você <strong>já constrói sistemas</strong> — conhece os problemas reais</div>
+      </div>
+      <div class="motive-item">
+        <div class="motive-icon">⚙️</div>
+        <div class="motive-text">Você tem <strong>experiência real com backend</strong></div>
+      </div>
+      <div class="motive-item">
+        <div class="motive-icon">🟢</div>
+        <div class="motive-text">Você <strong>domina Node.js</strong> — tema muito cobrado no edital</div>
+      </div>
+      <div class="motive-item">
+        <div class="motive-icon">🌐</div>
+        <div class="motive-text">Você entende <strong>APIs REST na prática</strong></div>
+      </div>
+      <div class="motive-item">
+        <div class="motive-icon">📈</div>
+        <div class="motive-text">48 dias de estudo focado é <strong>tempo suficiente</strong> para quem tem base</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;text-align:center;">
+      <div style="font-family:var(--font-head);font-size:22px;font-weight:800;margin-bottom:8px;color:var(--accent2);">Você está mais preparado do que imagina.</div>
+      <div style="font-size:14px;color:var(--muted);max-width:600px;margin:0 auto;">Foco, disciplina e consistência. 4 horas por dia, todos os dias. Em 48 dias, você terá revisado todo o edital e resolvido mais de 1000 questões. Esse é o caminho.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    Plano Estratégico IFCE · Analista de TI — Arquitetura e Desenvolvimento de Sistemas &nbsp;·&nbsp; Prova: 03 de Maio de 2026
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════ -->
+<script>
+/* ─── CONTADOR REGRESSIVO ─────────────────────────────── */
+function updateCountdown() {
+  // Data da prova: 03 de Maio de 2025 às 08:00
+  const examDate = new Date('2026-05-03T08:00:00');
+  const now = new Date();
+  const diff = examDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+
+  const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+
+  // Atualiza stat card de dias
+  document.getElementById('stat-days').textContent = days;
+
+  // Barra de dias — baseado em 80 dias totais
+  const totalDays = 80;
+  const elapsed = totalDays - days;
+  const pct = Math.min(Math.max((elapsed / totalDays) * 100, 0), 100);
+  document.getElementById('stat-days-bar').style.width = pct + '%';
+}
+
+// Executa imediatamente e a cada segundo
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ─── BARRA DE HORAS ─────────────────────────────────── */
+// Simula progresso de horas (pode ser personalizado)
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('stat-hours-bar').style.width = '8%';
+  }, 300);
+});
+
+/* ─── QUESTÕES TRACKER ───────────────────────────────── */
+const QUEST_KEY = 'ifce_questoes';
+const QUEST_META = 1000;
+
+// Carrega valor salvo (localStorage)
+function loadQuestions() {
+  try {
+    return parseInt(localStorage.getItem(QUEST_KEY) || '0', 10);
+  } catch { return 0; }
+}
+
+function saveQuestions(n) {
+  try { localStorage.setItem(QUEST_KEY, String(n)); } catch {}
+}
+
+function renderQuestions(n) {
+  const pct = Math.min((n / QUEST_META) * 100, 100);
+  // Anel SVG — circunferência = 2*PI*70 ≈ 439.8
+  const circ = 2 * Math.PI * 70;
+  const offset = circ - (pct / 100) * circ;
+
+  document.getElementById('ring-fill').style.strokeDasharray = circ;
+  document.getElementById('ring-fill').style.strokeDashoffset = offset;
+  document.getElementById('ring-num').textContent = n;
+
+  // Barra no dashboard
+  document.getElementById('prog-q-bar').style.width = pct + '%';
+  document.getElementById('prog-q-pct').textContent = pct.toFixed(1) + '%';
+
+  // Stat no header
+  document.getElementById('stat-q-num').textContent = n;
+  document.getElementById('stat-q-bar').style.width = pct + '%';
+
+  // Status message
+  const remaining = QUEST_META - n;
+  if (n === 0) {
+    document.getElementById('quest-status').textContent = 'Insira o total de questões resolvidas';
+  } else if (n >= QUEST_META) {
+    document.getElementById('quest-status').textContent = '🎉 Meta atingida! Excelente trabalho!';
+    document.getElementById('quest-status').style.color = 'var(--accent2)';
+  } else {
+    document.getElementById('quest-status').textContent = `Faltam ${remaining} questões para a meta. Continue assim!`;
+    document.getElementById('quest-status').style.color = 'var(--muted)';
+  }
+}
+
+function updateQuestions() {
+  const input = document.getElementById('quest-input');
+  const val = parseInt(input.value, 10);
+  if (isNaN(val) || val < 0) return;
+  const n = Math.min(val, QUEST_META);
+  saveQuestions(n);
+  renderQuestions(n);
+}
+
+function resetQuestions() {
+  document.getElementById('quest-input').value = '';
+  saveQuestions(0);
+  renderQuestions(0);
+}
+
+// Inicialização
+const saved = loadQuestions();
+if (saved > 0) document.getElementById('quest-input').value = saved;
+renderQuestions(saved);
+
+// Enter no input
+document.getElementById('quest-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') updateQuestions();
+});
+
+/* ─── NAVEGAÇÃO SUAVE ─────────────────────────────────── */
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const offset = 60; // altura da nav
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+// Destaca item de nav ativo durante scroll
+const navItems = document.querySelectorAll('.nav-item');
+const sections = ['dashboard','prova','edital','prioridade','rotina','semana','videos','questoes','estrategia','motivacao'];
+
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= 120) current = id;
+  });
+
+  navItems.forEach((item, i) => {
+    item.classList.toggle('active', sections[i] === current);
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+/* ─── CRONOGRAMA ─────────────────────────────────────── */
+
+const WEEK_START = new Date('2026-03-16T00:00:00'); // segunda 16/03 — dia zero (preparação)
+
+const WEEKDAYS     = ['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
+const WEEKDAYS_SH  = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+
+// Paleta por dia da semana (índice 0=Segunda … 6=Domingo)
+const DAY_COLORS = [
+  '#58a6ff', // Segunda — azul
+  '#3fb950', // Terça   — verde
+  '#f78166', // Quarta  — laranja-averm.
+  '#d2a8ff', // Quinta  — lilás
+  '#ffa657', // Sexta   — laranja
+  '#58a6ff', // Sábado  — azul
+  '#8b949e', // Domingo — cinza
+];
+
+// ── Dados das 7 semanas ───────────────────────────────────
+// S1: Seg 16/03 (dia zero) → Dom 22/03
+// S2: Seg 23/03 → Dom 29/03  |  S3: Seg 30/03 → Dom 05/04
+// S4: Seg 06/04 → Dom 12/04  |  S5: Seg 13/04 → Dom 19/04
+// S6: Seg 20/04 → Dom 26/04  |  S7: Seg 27/04 → Dom 03/05 (PROVA)
+const WEEKS = [
+  // ─────────────── SEMANA 1 ───────────────
+  {
+    label: 'Semana 1', theme: 'Fundamentos Backend & Arquitetura',
+    days: [
+      // Seg 16/03 — Dia Zero
+      { topic: '⚙️ Dia Zero', conteudo: ['Site de estudos preparado','Plano estratégico definido','Materiais e videoaulas organizados'], atividades: ['Revisar o plano completo','Conhecer o edital detalhadamente','Preparar ambiente de estudos'], revisao: ['Sem revisão — primeiro contato com o plano'], q: 0 },
+      // Ter 17/03
+      { topic: 'Arquitetura de Software', conteudo: ['Microsserviços — conceitos e benefícios','Arquitetura REST — princípios stateless','APIs — design e boas práticas','Arquitetura em Camadas (MVC, N-tier)','Arquitetura Hexagonal (Ports & Adapters)'], atividades: ['Assistir videoaula de Arquitetura de Software','Criar mapa mental dos estilos arquiteturais','Resolver 20 questões sobre arquitetura'], revisao: ['Primeiro dia de estudos — sem revisão 🚀'], q: 20 },
+      // Qua 18/03
+      { topic: 'Node.js & APIs REST', conteudo: ['Express.js — rotas, middlewares, controllers','JWT — geração, assinatura, verificação','Autenticação Bearer Token','Middleware de validação e erros','Boas práticas de estrutura de projeto'], atividades: ['Assistir videoaula de Node.js','Construir mentalmente uma API REST','Resolver 20 questões sobre Node.js e APIs'], revisao: ['Revisar arquitetura de software (10 min)','Flashcard: diferença JWT × Session'], q: 20 },
+      // Qui 19/03
+      { topic: 'Banco de Dados Relacional', conteudo: ['SQL — SELECT, INSERT, UPDATE, DELETE','JOINs — INNER, LEFT, RIGHT, FULL','Normalização — 1FN, 2FN, 3FN','PostgreSQL — recursos e diferenças','Índices e otimização de queries'], atividades: ['Assistir videoaula de SQL','Escrever 5 queries de JOIN do zero','Resolver 30 questões de banco de dados'], revisao: ['Revisar Node.js/JWT (10 min)','Reler as formas normais'], q: 30 },
+      // Sex 20/03
+      { topic: 'Git & DevOps', conteudo: ['Git — clone, commit, push, pull','Branches — criação, merge, rebase','GitLab — pipelines básicos','CI/CD — conceitos e etapas','Jenkins — jobs e stages'], atividades: ['Assistir videoaula de Git','Mapear fluxo Git Flow','Resolver 20 questões de DevOps/Git'], revisao: ['Revisar SQL e normalização (10 min)','Flashcard: merge × rebase'], q: 20 },
+      // Sáb 21/03
+      { topic: 'Scrum & Kanban', conteudo: ['Papéis Scrum: PO, SM, Dev Team','Eventos: Sprint, Planning, Review, Retro','Artefatos: Product Backlog, Sprint Backlog','Kanban — fluxo, WIP, colunas','Comparativo Scrum × Kanban'], atividades: ['Assistir videoaula de Scrum','Criar quadro Kanban mental','Resolver 20 questões de metodologias ágeis'], revisao: ['Revisar Git/CI-CD (10 min)','Reler cerimônias Scrum'], q: 20 },
+      // Dom 22/03
+      { topic: 'Segurança Web', conteudo: ['OWASP Top 10 — principais vulnerabilidades','JWT — algoritmos HS256, RS256','OAuth2 — Authorization Code Flow','ISO 27001 — conceitos gerais','MFA e SSO — definições e casos de uso'], atividades: ['Mapear as 10 vulnerabilidades OWASP','Resolver 20 questões de segurança','Revisão geral da semana 1 (20 min)'], revisao: ['Revisar Scrum (10 min)','Flashcard: OAuth2 flows'], q: 20 },
+    ],
+  },
+  // ─────────────── SEMANA 2 ───────────────
+  {
+    label: 'Semana 2', theme: 'Aprofundamento Técnico',
+    days: [
+      // Seg 23/03
+      { topic: 'Português & Legislação I', conteudo: ['Interpretação de texto — estratégias','Crase — regras principais','Concordância verbal e nominal','LGPD — princípios, bases legais, ANPD','Lei 8112 — regime jurídico dos servidores'], atividades: ['Ler textos e praticar interpretação','Resumir LGPD em tópicos','Resolver 20 questões de Português + Legislação'], revisao: ['Revisão geral da semana 1 (20 min)','Reler mapas mentais criados'], q: 20 },
+      // Ter 24/03
+      { topic: 'Arq. Hexagonal & DDD', conteudo: ['Ports & Adapters em profundidade','Domain-Driven Design — entidades, value objects','Clean Architecture — camadas e dependências','CQRS — Command Query Responsibility Segregation','Event Sourcing — conceitos básicos'], atividades: ['Assistir videoaula de Clean Architecture','Desenhar diagrama hexagonal','Resolver 20 questões de arquitetura avançada'], revisao: ['Revisar arquitetura semana 1 (10 min)','Reler conceitos de DDD'], q: 20 },
+      // Qua 25/03
+      { topic: 'REST Avançado', conteudo: ['HATEOAS — hypermedia e links','Versionamento de API (URI, Header, Query)','Status codes HTTP — 2xx, 3xx, 4xx, 5xx','Content negotiation — Accept, Content-Type','Rate limiting e throttling'], atividades: ['Montar tabela de status codes','Praticar design de endpoints RESTful','Resolver 20 questões sobre REST'], revisao: ['Revisar Node.js e Express (10 min)','Flashcard: principais status codes'], q: 20 },
+      // Qui 26/03
+      { topic: 'MongoDB & NoSQL', conteudo: ['Documentos e Collections','Queries — find, aggregate, $match, $group','Índices no MongoDB','MongoDB vs PostgreSQL — quando usar cada','Modelagem de dados NoSQL'], atividades: ['Assistir videoaula de MongoDB','Comparar modelagem relacional vs documental','Resolver 20 questões de banco NoSQL'], revisao: ['Revisar SQL e normalização (10 min)','Reler diferenças NoSQL × SQL'], q: 20 },
+      // Sex 27/03
+      { topic: 'Jenkins & CI/CD Avançado', conteudo: ['Jenkins Pipeline — Declarativa vs Scripted','Stages: build, test, deploy','Integração com Git e Docker','Artefatos e variáveis de ambiente','GitLab CI — .gitlab-ci.yml básico'], atividades: ['Mapear um pipeline completo','Estudar arquivo .gitlab-ci.yml','Resolver 20 questões de CI/CD'], revisao: ['Revisar Git e branches (10 min)','Flashcard: etapas do CI/CD'], q: 20 },
+      // Sáb 28/03
+      { topic: 'XP & BPMN', conteudo: ['Extreme Programming — TDD, pair programming','BPMN — notação, eventos, gateways, tarefas','Diagramas de processo — swimlanes','Comparativo XP × Scrum','User stories e critérios de aceite'], atividades: ['Assistir conteúdo de BPMN','Desenhar um fluxo BPMN simples','Resolver 20 questões de XP e BPMN'], revisao: ['Revisar Scrum e Kanban (10 min)','Reler símbolos BPMN'], q: 20 },
+      // Dom 29/03
+      { topic: 'OAuth2, SSO & MFA', conteudo: ['OAuth2 — todos os flows (Code, Implicit, Client Credentials)','OpenID Connect — ID Token','SSO — Single Sign-On com Identity Provider','MFA — TOTP, SMS, biometria','Diferença autenticação × autorização'], atividades: ['Mapear flows OAuth2','Flashcards de cada flow','Resolver 20 questões de autenticação'], revisao: ['Revisar JWT e OWASP (10 min)','Reler flows OAuth2'], q: 20 },
+    ],
+  },
+  // ─────────────── SEMANA 3 ───────────────
+  {
+    label: 'Semana 3', theme: 'Frameworks e Ferramentas',
+    days: [
+      // Seg 30/03
+      { topic: 'Legislação Profunda', conteudo: ['LGPD — bases legais, titular, controlador, operador','ANPD — estrutura e competências','DPO — papel e responsabilidades','Incidentes de segurança — notificação','Lei 8112 — direitos, deveres, penalidades, vacância'], atividades: ['Montar resumo da LGPD em tabela','Resolver 25 questões de legislação'], revisao: ['Revisão geral da semana 2 (20 min)','Reler mapas mentais'], q: 25 },
+      // Ter 31/03
+      { topic: 'SpringBoot', conteudo: ['Injeção de dependência — @Autowired, @Component','REST Controller — @RestController, @GetMapping','JPA + Hibernate no Spring','Spring Security básico','Spring Boot Actuator — monitoramento'], atividades: ['Assistir videoaula de SpringBoot','Mapear anotações principais','Resolver 20 questões de SpringBoot'], revisao: ['Revisar Java/Backend (10 min)'], q: 20 },
+      // Qua 01/04
+      { topic: 'Hibernate & ORM', conteudo: ['ORM — conceito e vantagens','Mapeamento — @Entity, @Table, @Column','Relacionamentos — @OneToMany, @ManyToOne','HQL vs JPQL vs SQL nativo','Lazy vs Eager loading'], atividades: ['Mapear anotações Hibernate','Flashcard: lazy × eager','Resolver 20 questões de ORM'], revisao: ['Revisar SpringBoot (10 min)','Reler mapeamentos JPA'], q: 20 },
+      // Qui 02/04
+      { topic: 'Django & Flask', conteudo: ['Django — MTV: Models, Templates, Views','ORM Django — models e migrations','Django REST Framework básico','Flask — rotas, blueprints, contexto','Comparativo Django × Flask'], atividades: ['Assistir conteúdo de Django','Mapear diferenças Django × Flask','Resolver 20 questões de Django/Flask'], revisao: ['Revisar Hibernate (10 min)','Reler MTV vs MVC'], q: 20 },
+      // Sex 03/04
+      { topic: 'React', conteudo: ['Componentes funcionais e de classe','Hooks — useState, useEffect, useContext','Props e State — fluxo de dados','JSX — sintaxe e expressões','Virtual DOM — conceito e benefícios'], atividades: ['Assistir videoaula de React','Mapear principais Hooks','Resolver 20 questões de React'], revisao: ['Revisar JavaScript e APIs (10 min)','Flashcard: hooks React'], q: 20 },
+      // Sáb 04/04
+      { topic: 'Vue.js', conteudo: ['Diretivas — v-if, v-for, v-bind, v-model','Componentes — props, emits','Vuex — state management','Vue Router — rotas e navegação','Comparativo React × Vue'], atividades: ['Assistir conteúdo de Vue.js','Comparar Vue com React','Resolver 20 questões de frontend'], revisao: ['Revisar React (10 min)','Reler diretivas Vue'], q: 20 },
+      // Dom 05/04
+      { topic: 'Modelagem de Dados', conteudo: ['MER — Modelo Entidade-Relacionamento','DER — Diagrama Entidade-Relacionamento','Normalização 1FN, 2FN, 3FN — exemplos','Dicionário de dados','Cardinalidade — 1:1, 1:N, N:N'], atividades: ['Desenhar um MER completo','Praticar normalização em exemplos','Resolver 25 questões de modelagem'], revisao: ['Revisar SQL e joins (10 min)','Reler formas normais com exemplos'], q: 25 },
+    ],
+  },
+  // ─────────────── SEMANA 4 ───────────────
+  {
+    label: 'Semana 4', theme: 'Segurança e Integração Avançada',
+    days: [
+      // Seg 06/04
+      { topic: 'Revisão Semanas 1–3', conteudo: ['Revisão de arquitetura e microsserviços','Revisão de Node.js, REST e banco de dados','Revisão de frameworks (Spring, Django, React)','Revisão de Git, CI/CD e segurança','Revisão de metodologias ágeis'], atividades: ['Reler todos os mapas mentais criados','Simulado temático de 30 questões','Identificar pontos fracos'], revisao: ['Revisão geral da semana 3 (30 min)'], q: 30 },
+      // Ter 07/04
+      { topic: 'OWASP Top 10 — Profundo', conteudo: ['A1 Broken Access Control','A2 Cryptographic Failures','A3 Injection (SQL, NoSQL, LDAP)','A7 Identification & Auth Failures','A10 SSRF — Server-Side Request Forgery'], atividades: ['Mapear as 10 vulnerabilidades com exemplos','Flashcard por vulnerabilidade','Resolver 25 questões de segurança OWASP'], revisao: ['Revisar segurança da semana 1 (10 min)'], q: 25 },
+      // Qua 08/04
+      { topic: 'Microsserviços Avançado', conteudo: ['API Gateway — roteamento e autenticação','Service Mesh — Istio básico','Event-Driven Architecture — pub/sub','Message brokers — RabbitMQ, Kafka','Circuit Breaker — resiliência de serviços'], atividades: ['Mapear padrões de microsserviços','Comparar API Gateway × BFF','Resolver 20 questões de microsserviços'], revisao: ['Revisar REST avançado (10 min)','Flashcard: circuit breaker'], q: 20 },
+      // Qui 09/04
+      { topic: 'PostgreSQL Avançado', conteudo: ['Índices — B-tree, Hash, GIN, GiST','Transactions — ACID, isolation levels','Views e Materialized Views','Functions e Stored Procedures','Explain Analyze — análise de performance'], atividades: ['Praticar criação de índices','Resolver 25 questões de PostgreSQL avançado'], revisao: ['Revisar SQL e modelagem (10 min)'], q: 25 },
+      // Sex 10/04
+      { topic: 'Docker & Containers', conteudo: ['Docker — images, containers, Dockerfile','Docker Compose — orquestração local','Kubernetes básico — pods, services, deployments','Volumes e redes no Docker','Diferença containers × VMs'], atividades: ['Mapear comandos Docker essenciais','Estudar Kubernetes conceitual','Resolver 20 questões de containers'], revisao: ['Revisar CI/CD e pipelines (10 min)'], q: 20 },
+      // Sáb 11/04
+      { topic: 'Gestão de Projetos', conteudo: ['Gerenciamento de escopo, tempo, custo','Riscos — identificação e mitigação','PMBOK — áreas de conhecimento básicas','EAP — Estrutura Analítica do Projeto','Comparativo ágil × cascata'], atividades: ['Mapear áreas do PMBOK','Flashcard: tipos de risco','Resolver 20 questões de gestão'], revisao: ['Revisar Scrum e XP (10 min)'], q: 20 },
+      // Dom 12/04
+      { topic: 'LGPD — Revisão Profunda', conteudo: ['Bases legais para tratamento de dados','Direitos dos titulares — acesso, correção, exclusão','Transferência internacional de dados','DPO — responsabilidades','Penalidades e sanções administrativas'], atividades: ['Montar resumo em tabela','Resolver 25 questões de LGPD'], revisao: ['Revisar Lei 8112 (10 min)','Reler bases legais LGPD'], q: 25 },
+    ],
+  },
+  // ─────────────── SEMANA 5 ───────────────
+  {
+    label: 'Semana 5', theme: 'Revisão Temática e Simulados',
+    days: [
+      // Seg 13/04
+      { topic: 'Português II', conteudo: ['Concordância verbal — casos especiais','Concordância nominal','Regência verbal e nominal','Pronomes — emprego e colocação','Período composto — subordinadas e coordenadas'], atividades: ['Praticar interpretação de textos','Resolver 20 questões de Português'], revisao: ['Revisão geral da semana 4 (20 min)'], q: 20 },
+      // Ter 14/04
+      { topic: 'Revisão — Backend', conteudo: ['Node.js — Express, JWT, Middleware','APIs REST — boas práticas, status codes','JSON — estrutura e serialização','Autenticação e autorização','Comparativo com outros frameworks'], atividades: ['Reler resumos de Node.js','Resolver 30 questões de backend'], revisao: ['Revisar REST avançado (10 min)'], q: 30 },
+      // Qua 15/04
+      { topic: 'Revisão — Banco de Dados', conteudo: ['SQL — JOINs, subqueries, agregações','PostgreSQL — índices, transactions','MongoDB — queries e agregações','Modelagem — MER, normalização','Comparativo SQL × NoSQL'], atividades: ['Praticar queries complexas mentalmente','Resolver 30 questões de banco de dados'], revisao: ['Revisar modelagem de dados (10 min)'], q: 30 },
+      // Qui 16/04
+      { topic: 'Revisão — DevOps', conteudo: ['Git — fluxo completo, branches, conflitos','CI/CD — etapas e ferramentas','Docker — containers e compose','Jenkins — pipelines','GitLab CI — yaml básico'], atividades: ['Mapear o fluxo DevOps completo','Resolver 25 questões de DevOps'], revisao: ['Revisar CI/CD (10 min)'], q: 25 },
+      // Sex 17/04
+      { topic: 'Revisão — Arquitetura', conteudo: ['Microsserviços — padrões e trade-offs','Arquitetura Hexagonal — ports e adapters','Arquitetura em Camadas — MVC','API Gateway e BFF','REST × GraphQL × gRPC (conceitual)'], atividades: ['Criar mapa mental final de arquitetura','Resolver 25 questões de arquitetura'], revisao: ['Revisar DDD e clean arch (10 min)'], q: 25 },
+      // Sáb 18/04
+      { topic: 'Simulado Completo 1', conteudo: ['Simulado com 60 questões cronometrado','Condições reais: sem consulta, tempo controlado','Distribuição: 35 específicas + 10 Português + 15 Legislação'], atividades: ['Realizar simulado completo (2h30)','Corrigir e classificar erros por tema','Listar 5 maiores pontos fracos'], revisao: ['Revisar resumos da semana (20 min)'], q: 60 },
+      // Dom 19/04
+      { topic: 'Revisão dos Erros', conteudo: ['Análise dos erros do simulado 1','Releitura dos temas com mais erros','Correção de conceitos equivocados','Flashcards dos pontos fracos'], atividades: ['Revisar cada questão errada','Resolver 20 questões extras nos temas fracos'], revisao: ['Atualizar mapas mentais com correções'], q: 20 },
+    ],
+  },
+  // ─────────────── SEMANA 6 ───────────────
+  {
+    label: 'Semana 6', theme: 'Simulados e Pontos Críticos',
+    days: [
+      // Seg 20/04
+      { topic: 'Revisão — Ágil & Gestão', conteudo: ['Scrum — papéis, eventos, artefatos completos','Kanban — métricas, WIP, fluxo','XP — práticas técnicas','BPMN — notação completa','Gestão de projetos × Ágil'], atividades: ['Mapear cerimônias Scrum com exemplos','Resolver 20 questões de metodologias'], revisao: ['Revisão geral da semana 5 (20 min)'], q: 20 },
+      // Ter 21/04
+      { topic: 'Revisão — Segurança', conteudo: ['OWASP Top 10 — revisão completa','OAuth2 — revisão de todos os flows','JWT — claims, expiração, refresh token','SSO e federação de identidade','ISO 27001 — controles e domínios'], atividades: ['Resolver 25 questões de segurança'], revisao: ['Revisar LGPD e privacidade (10 min)'], q: 25 },
+      // Qua 22/04
+      { topic: 'Revisão — Frontend', conteudo: ['HTML — semântica, formulários, acessibilidade','CSS — flexbox, grid, responsividade','React — Hooks, ciclo de vida','Vue.js — diretivas e Vuex','Bootstrap — grid e componentes'], atividades: ['Resolver 20 questões de frontend'], revisao: ['Revisar JavaScript e Ajax (10 min)'], q: 20 },
+      // Qui 23/04
+      { topic: 'Revisão — Legislação', conteudo: ['LGPD — revisão completa com exemplos','Lei 8112 — regime disciplinar','Administração Pública — princípios LIMPE','Lei de Acesso à Informação (LAI)','Estrutura do IFCE e órgãos federais'], atividades: ['Resolver 25 questões de legislação'], revisao: ['Revisar Português (10 min)'], q: 25 },
+      // Sex 24/04
+      { topic: 'Simulado Completo 2', conteudo: ['Segundo simulado — 60 questões','Foco em corrigir pontos fracos do simulado 1','Medir evolução e tempo por questão'], atividades: ['Realizar simulado completo (2h30)','Comparar resultado com simulado 1','Listar temas que precisam de reforço'], revisao: ['Revisão rápida dos resumos (15 min)'], q: 60 },
+      // Sáb 25/04
+      { topic: 'Pontos Fracos — Reforço', conteudo: ['Revisar os temas com mais erros nos 2 simulados','Releitura focada dos conteúdos críticos','Resolver questões extras nesses temas'], atividades: ['Identificar padrão dos erros','Resolver 25 questões nos temas mais críticos'], revisao: ['Atualizar flashcards com novos aprendizados'], q: 25 },
+      // Dom 26/04
+      { topic: 'Revisão Rápida Geral', conteudo: ['Flashcards de todos os temas em sequência','Mapas mentais — releitura completa','Resumos — varredura rápida','Conceitos-chave mais cobrados pela AOCP'], atividades: ['Sessão de flashcards (1h)','Reler todos os mapas mentais','Resolver 20 questões variadas'], revisao: ['Planejar a semana 7 — reta final'], q: 20 },
+    ],
+  },
+  // ─────────────── SEMANA 7 ───────────────
+  {
+    label: 'Semana 7', theme: 'Reta Final — Revisão Leve',
+    days: [
+      // Seg 27/04
+      { topic: 'Revisão Conceitos-Chave', conteudo: ['Principais conceitos de cada tema do edital','Listas de definições rápidas','Conceitos que mais aparecem na banca AOCP'], atividades: ['Reler resumos principais','Resolver 20 questões variadas'], revisao: ['Revisar pontos marcados como críticos'], q: 20 },
+      // Ter 28/04
+      { topic: 'Simulado Final', conteudo: ['Último simulado completo — condições reais','Cronometrado, sem consulta','Análise de resultado e confiança'], atividades: ['Realizar simulado final (2h30)','Revisar questões erradas rapidamente'], revisao: ['Leve revisão dos erros (sem aprofundar)'], q: 60 },
+      // Qua 29/04
+      { topic: 'Revisão dos Erros Finais', conteudo: ['Análise dos erros do simulado final','Revisão dos conceitos que falharam'], atividades: ['Resolver 15 questões nos temas com erros','Atualizar flashcards finais'], revisao: ['Releitura leve dos mapas mentais'], q: 15 },
+      // Qui 30/04
+      { topic: 'Revisão Express Final', conteudo: ['Mapas mentais — varredura rápida','Resumos de uma página por tema','Conceitos que você ainda sente insegurança'], atividades: ['Sessão final de flashcards (1h)','Resolver no máximo 10 questões'], revisao: ['Preparar mentalidade para o dia da prova'], q: 10 },
+      // Sex 01/05
+      { topic: 'Revisão Levíssima', conteudo: ['Apenas flashcards — sem conteúdo novo','Releitura dos mapas mentais mais importantes','Descanso mental é parte da preparação'], atividades: ['Sessão de flashcards (30 min)','No máximo 5 questões leves'], revisao: ['Separar documentos e material para a prova'], q: 0 },
+      // Sáb 02/05 — último dia de estudos
+      { topic: 'Véspera da Prova', conteudo: ['Zero conteúdo novo — descanso total','Revisão levíssima apenas se sentir necessidade','O cérebro precisa consolidar o aprendizado'], atividades: ['Separar: RG + comprovante + caneta','Conferir local e horário da prova','Dormir cedo — pelo menos 8 horas'], revisao: ['Última checagem: tudo pronto para amanhã ✅'], q: 0 },
+      // Dom 03/05 — PROVA
+      { topic: '🎯 DIA DA PROVA', conteudo: ['03 de Maio de 2026 — Instituto AOCP','Cargo: Analista de TI – Arquitetura e Desenvolvimento','RG + comprovante de inscrição','Caneta azul ou preta','Chegue com 30 min de antecedência'], atividades: ['Café da manhã tranquilo','Revisão de 15 minutos no máximo','Confiar na preparação — você está pronto!','Ordem: Específicas → Português → Legislação'], revisao: ['Foco, calma e confiança. Boa prova! 🚀'], q: 0 },
+    ],
+  },
+];
+
+// ── Estado da navegação ───────────────────────────────────
+// Sem detecção automática: sempre começa na Semana 1, Dia 0 (Dia Zero — Seg 16/03)
+let currentView    = 'week'; // 'week' | 'day' | 'all'
+let currentWeekIdx = 0;
+let currentDayIdx  = 0;
+
+// ── Helpers de data ───────────────────────────────────────
+function getWeekStartDate(wi) {
+  const d = new Date(WEEK_START);
+  d.setDate(d.getDate() + wi * 7);
+  return d;
+}
+
+function getDate(wi, di) {
+  const d = getWeekStartDate(wi);
+  d.setDate(d.getDate() + di);
+  return d;
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+}
+
+function fmtDateFull(d) {
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
+}
+
+// ── Troca de modo de visualização ────────────────────────
+function setView(v) {
+  currentView = v;
+
+  document.getElementById('view-week').style.display = v === 'week' ? 'block' : 'none';
+  document.getElementById('view-day').style.display  = v === 'day'  ? 'block' : 'none';
+  document.getElementById('view-all').style.display  = v === 'all'  ? 'block' : 'none';
+
+  document.getElementById('sched-nav-week').style.display = (v === 'week') ? 'flex' : 'none';
+  document.getElementById('sched-nav-day').style.display  = (v === 'day')  ? 'flex' : 'none';
+
+  document.getElementById('btn-view-week').classList.toggle('active', v === 'week');
+  document.getElementById('btn-view-day').classList.toggle('active', v === 'day');
+  document.getElementById('btn-view-all').classList.toggle('active', v === 'all');
+
+  if (v === 'week') renderWeekView();
+  if (v === 'day')  renderDayView();
+  if (v === 'all')  renderAllView();
+}
+
+// ── RENDERIZA VISTA SEMANA ────────────────────────────────
+function renderWeekView() {
+  const week  = WEEKS[currentWeekIdx];
+  const start = getWeekStartDate(currentWeekIdx);
+  const end   = new Date(start); end.setDate(end.getDate() + 6);
+
+  document.getElementById('sched-title').textContent =
+    `Cronograma — ${week.label}`;
+  document.getElementById('sched-desc').textContent =
+    `${fmtDateFull(start)} a ${fmtDateFull(end)} · ${week.theme}`;
+
+  // Pills de semana
+  buildWeekPills();
+
+  // Botões prev/next
+  document.getElementById('btn-prev-week').disabled = currentWeekIdx === 0;
+  document.getElementById('btn-next-week').disabled = currentWeekIdx === WEEKS.length - 1;
+
+  const grid = document.getElementById('week-grid-single');
+  grid.innerHTML = week.days.map((day, di) => {
+    if (day.topic === '—') {
+      return `<div class="day-card" style="opacity:.2;pointer-events:none;">
+        <div class="day-label">${WEEKDAYS[di]}</div>
+        <div class="day-num" style="color:var(--border);">${getDate(currentWeekIdx, di).getDate()}</div>
+      </div>`;
+    }
+    const date  = getDate(currentWeekIdx, di);
+    const color = day.topic === '🎯 DIA DA PROVA' ? 'var(--accent2)' : DAY_COLORS[di];
+    const badge = day.q > 0
+      ? `<div class="day-badge">✅ ${day.q} questões</div>`
+      : (day.topic === '🎯 DIA DA PROVA' ? `<div class="day-badge" style="background:rgba(63,185,80,.15);color:var(--accent2);border-color:rgba(63,185,80,.35);">🎓 Prova</div>` : '');
+
+    return `<div class="day-card" onclick="goToDay(${di})" style="cursor:pointer;" title="Ver detalhes do dia">
+      <div class="day-label">${WEEKDAYS[di]}</div>
+      <div class="day-num" style="color:${color};">${date.getDate()}</div>
+      <div class="day-topic">${day.topic}</div>
+      <div class="day-sub">${day.conteudo.slice(0,3).join('<br>').replace(/—/g,'·')}</div>
+      ${badge}
+    </div>`;
+  }).join('');
+}
+
+// ── Navega entre semanas ──────────────────────────────────
+function changeWeek(dir) {
+  const n = currentWeekIdx + dir;
+  if (n < 0 || n >= WEEKS.length) return;
+  currentWeekIdx = n;
+  currentDayIdx  = 0;
+  renderWeekView();
+}
+
+function buildWeekPills() {
+  document.getElementById('week-pills').innerHTML = WEEKS.map((w, i) => {
+    const cls = 'week-pill' + (i === currentWeekIdx ? ' active' : '');
+    return `<div class="${cls}" onclick="jumpToWeek(${i})">${w.label.replace('Semana ','S')}</div>`;
+  }).join('');
+}
+
+function jumpToWeek(idx) {
+  currentWeekIdx = idx;
+  currentDayIdx  = 0;
+  renderWeekView();
+}
+
+// ── Clique num dia na vista semana → vai para vista dia ───
+function goToDay(di) {
+  currentDayIdx = di;
+  setView('day');
+}
+
+// ── RENDERIZA VISTA DIA ───────────────────────────────────
+function renderDayView() {
+  const week  = WEEKS[currentWeekIdx];
+  const day   = week.days[currentDayIdx];
+  const date  = getDate(currentWeekIdx, currentDayIdx);
+  const color = day.topic === '🎯 DIA DA PROVA' ? '#3fb950' : DAY_COLORS[currentDayIdx];
+
+  document.getElementById('sched-title').textContent =
+    `${week.label} — ${WEEKDAYS[currentDayIdx]}, ${fmtDateFull(date)}`;
+  document.getElementById('sched-desc').textContent =
+    `${week.theme} · clique em um bloco de conteúdo para expandir`;
+
+  // Pills de dia
+  buildDayPills();
+
+  const isExam = day.topic === '🎯 DIA DA PROVA';
+  const qBlock = day.q > 0
+    ? `<div class="day-detail-q-badge" style="border-color:rgba(63,185,80,.3);">
+         <div>${day.q}</div>
+         <div class="day-detail-q-label">questões</div>
+       </div>`
+    : (isExam ? `<div class="day-detail-q-badge" style="background:rgba(63,185,80,.1);border-color:rgba(63,185,80,.4);color:#3fb950;font-size:28px;">🎓</div>` : '');
+
+  const makeList = (items, dotColor) => items.length
+    ? items.map(it => `<div class="day-col-item">
+        <div class="day-col-item-dot" style="background:${dotColor};"></div>
+        <span>${it}</span>
+      </div>`).join('')
+    : `<div style="font-size:12px;color:var(--muted);">—</div>`;
+
+  document.getElementById('day-detail-card').innerHTML = `
+    <div class="day-detail">
+      <div class="day-detail-header">
+        <div>
+          <div class="day-detail-weekday">${WEEKDAYS[currentDayIdx]}</div>
+          <div class="day-detail-date" style="color:${color};">${date.getDate()}</div>
+          <div style="font-size:11px;color:var(--muted);">${fmtDate(date)}</div>
+        </div>
+        <div class="day-detail-title-block">
+          <div class="day-detail-topic" style="color:${color};">${day.topic}</div>
+          <div class="day-detail-theme">${week.label} · ${week.theme}</div>
+        </div>
+        ${qBlock}
+      </div>
+      <div class="day-detail-body">
+        <div class="day-detail-col">
+          <div class="day-col-label">📚 Conteúdo</div>
+          <div class="day-col-items">${makeList(day.conteudo, color)}</div>
+        </div>
+        <div class="day-detail-col">
+          <div class="day-col-label">✅ Atividades</div>
+          <div class="day-col-items">${makeList(day.atividades, 'var(--accent2)')}</div>
+        </div>
+        <div class="day-detail-col">
+          <div class="day-col-label">🔄 Revisão</div>
+          <div class="day-col-items">${makeList(day.revisao, 'var(--accent4)')}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function changeDay(dir) {
+  // Navega pelos dias, pulando para a semana anterior/próxima se necessário
+  let di = currentDayIdx + dir;
+  let wi = currentWeekIdx;
+
+  // Avança ou recua semana se ultrapassar os 7 dias
+  while (di < 0) {
+    if (wi === 0) { di = 0; break; }
+    wi--; di += 7;
+  }
+  while (di > 6) {
+    if (wi === WEEKS.length - 1) { di = 6; break; }
+    wi++; di -= 7;
+  }
+
+  currentWeekIdx = wi;
+  currentDayIdx  = di;
+  renderDayView();
+  buildDayPills();
+}
+
+function buildDayPills() {
+  document.getElementById('day-pills').innerHTML = WEEKDAYS_SH.map((d, i) => {
+    const cls = 'day-pill' + (i === currentDayIdx ? ' active' : '');
+    return `<div class="${cls}" onclick="jumpToDay(${i})">${d}</div>`;
+  }).join('');
+}
+
+function jumpToDay(di) {
+  currentDayIdx = di;
+  renderDayView();
+  buildDayPills();
+}
+
+// ── RENDERIZA TODAS AS SEMANAS ────────────────────────────
+function renderAllView() {
+  document.getElementById('sched-title').textContent = 'Cronograma Completo — Todas as Semanas';
+  document.getElementById('sched-desc').textContent  = '16 de Março (dia zero) → 02 de Maio (último dia) → 03 de Maio (PROVA)';
+
+  document.getElementById('all-weeks-container').innerHTML = WEEKS.map((week, wi) => {
+    const start = getWeekStartDate(wi);
+    const end   = new Date(start); end.setDate(end.getDate() + 6);
+
+    const daysHTML = week.days.map((day, di) => {
+      if (day.topic === '—') return `<div class="day-card" style="opacity:.2;pointer-events:none;"><div class="day-label">${WEEKDAYS[di]}</div><div class="day-num" style="color:var(--border);">${getDate(wi,di).getDate()}</div></div>`;
+      const date  = getDate(wi, di);
+      const color = day.topic === '🎯 DIA DA PROVA' ? 'var(--accent2)' : DAY_COLORS[di];
+      const badge = day.q > 0 ? `<div class="day-badge">✅ ${day.q}q</div>` : (day.topic === '🎯 DIA DA PROVA' ? `<div class="day-badge" style="background:rgba(63,185,80,.15);color:var(--accent2);">🎓 Prova</div>` : '');
+      return `<div class="day-card" onclick="jumpToWeekDay(${wi},${di})" style="cursor:pointer;" title="${day.topic}">
+        <div class="day-label">${WEEKDAYS[di]}</div>
+        <div class="day-num" style="color:${color};">${date.getDate()}</div>
+        <div class="day-topic">${day.topic}</div>
+        <div class="day-sub">${day.conteudo.slice(0,2).join('<br>')}</div>
+        ${badge}
+      </div>`;
+    }).join('');
+
+    return `<div class="all-week-block" style="animation-delay:${wi*.05}s">
+      <div class="all-week-header">
+        <div>
+          <div class="all-week-label">${week.label} — ${week.theme}</div>
+          <div class="all-week-dates">${fmtDate(start)} a ${fmtDate(end)}</div>
+        </div>
+        <div class="all-week-status"><span class="badge badge-blue">${week.days.reduce((a,d)=>a+d.q,0)} questões</span></div>
+      </div>
+      <div class="week-grid">${daysHTML}</div>
+    </div>`;
+  }).join('');
+}
+
+// Clique em dia na vista "todas" → vai para vista dia
+function jumpToWeekDay(wi, di) {
+  currentWeekIdx = wi;
+  currentDayIdx  = di;
+  setView('day');
+}
+
+// ── Inicializa ────────────────────────────────────────────
+(function initSchedule() {
+  setView('week');
+})();
+
+/* ─── ANIMAÇÃO DE ENTRADA (Intersection Observer) ─────── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card, .stat-card, .day-card, .video-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .4s ease, transform .4s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
